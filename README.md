@@ -2,9 +2,13 @@
 
 Swift UI Test with Weather API
 
-![screenshot](screenshot.jpg)
+<img src="screenshot.jpg" alt="screenshot" style="zoom:25%;" />
 
 
+
+------
+
+## Step1. Display data from naver.com (parsing)
 
 using URL, Data, String.components()
 
@@ -39,3 +43,8 @@ func loadWeather ( ) -> Void {
 }
 ```
 
+
+
+## Step2. Display data on widget
+
+- Not yet
