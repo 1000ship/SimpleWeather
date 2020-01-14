@@ -11,9 +11,10 @@ import CoreFoundation
 
 struct ContentView: View {
     
-    @State var temp : String = ""
-    @State var wind : String = ""
-    @State var humi : String = ""
+    @State var temp : String = "               "
+    @State var wind : String = "               "
+    @State var humi : String = "               "
+    @State var loaded : Bool = false
     
     func getBeside( str : String, from : String, to : String, index : Int = 0 ) -> String
     {
@@ -31,6 +32,7 @@ struct ContentView: View {
             temp = getBeside(str: partial, from: "<dd class=\"now_weather1_center temp1 MB10\">", to: "</dd>")
             wind = getBeside(str: partial, from: "<dd class=\"now_weather1_center\">", to: "</dd>")
             humi = getBeside(str: partial, from: "<dd class=\"now_weather1_center\">", to: "</dd>", index: 1)
+            self.loaded = true
         }
         catch
         {
@@ -39,34 +41,77 @@ struct ContentView: View {
     }
     
     var body: some View {
+        
         VStack() {
+            
+            Spacer()
+            
             Text("Today's Weather")
                 .font(.title)
                 .fontWeight(.thin)
+            
             Text("\(temp)")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
                 .padding(.top, 20.0)
+                .offset(x: 0, y: CGFloat(self.loaded ? 0 : 5))
+                .opacity(self.loaded ? 1 : 0 )
+                .animation(Animation.easeInOut(duration: 0.25))
+                
             
             Text("풍속 \(wind)")
                 .font(.title)
                 .fontWeight(.medium)
-                .animation(/*@START_MENU_TOKEN@*/.easeInOut/*@END_MENU_TOKEN@*/)
+                .offset(x: 0, y: CGFloat(self.loaded ? 0 : 5))
+                .opacity(self.loaded ? 1 : 0 )
+                .animation(Animation.easeInOut(duration: 0.25).delay(0.05))
+                
                 
             Text("습도 \(humi)")
                 .font(.title)
                 .fontWeight(.medium)
+                .offset(x: 0, y: CGFloat(self.loaded ? 0 : 5))
+                .opacity(self.loaded ? 1 : 0 )
+                .animation(Animation.easeInOut(duration: 0.25).delay(0.1))
+            
             Text("Have a nice day")
                 .font(.footnote)
                 .fontWeight(.ultraLight)
                 .padding(.top, 50.0)
-                
+            
+            Spacer()
+            
+            Button(action: reloadWeather){
+                Text("Reload Weather")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.white)
+                    .padding(.horizontal, 30.0)
+                    .padding(.vertical, 10.0)
+                    .background(Color.blue)
+            }
+            .cornerRadius(10)
+            .padding(.bottom, UIScreen.main.bounds.height * 0.08)
+            .opacity(self.loaded ? 1 : 0 )
+            .offset(x: 0, y: CGFloat(self.loaded ? 0 : UIScreen.main.bounds.height * 0.1 ))
+            .animation(Animation.easeInOut(duration: 0.3))
+        
         }
         .onAppear(perform: loadWeather)
     }
+    
+    func reloadWeather (){
+        if self.loaded {
+            self.loaded = false
+            let time = DispatchTime.now() + .milliseconds(650)
+            DispatchQueue.main.asyncAfter(deadline: time) {
+                self.loadWeather()
+            }
+        }
+    }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider{
     static var previews: some View {
         ContentView()
     }
