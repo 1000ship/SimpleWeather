@@ -47,7 +47,7 @@ func loadWeather ( ) -> Void {
 
 ## Step2. Animation & Refresh Data
 
-<video src="screenrecord.mp4"height="500px" ></video>
+<video src="screenrecord.mp4" height="500px"></video>
 
 ```swift
 // Button's style
