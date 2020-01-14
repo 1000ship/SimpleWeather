@@ -2,7 +2,7 @@
 
 Swift UI Test with Weather API
 
-<img src="screenshot.jpg" alt="screenshot" style="zoom:25%;" />
+<img src="screenshot.jpg" alt="screenshot" style="height: 500px;" />
 
 
 
