@@ -51,7 +51,7 @@ struct ContentView: View {
             Text("풍속 \(wind)")
                 .font(.title)
                 .fontWeight(.medium)
-            }
+                .animation(/*@START_MENU_TOKEN@*/.easeInOut/*@END_MENU_TOKEN@*/)
                 
             Text("습도 \(humi)")
                 .font(.title)
