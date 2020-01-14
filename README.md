@@ -45,9 +45,15 @@ func loadWeather ( ) -> Void {
 
 
 
+------
+
+
+
 ## Step2. Animation & Refresh Data
 
-<video src="screenrecord.mp4"height="500px" ></video>
+<img src="screenrecord.gif" alt="screenshot" height="500px" />
+
+using animation, offset, opacity
 
 ```swift
 // Button's style
@@ -66,6 +72,10 @@ Button(action: reloadWeather){
 .offset(x: 0, y: CGFloat(self.loaded ? 0 : UIScreen.main.bounds.height * 0.1 ))
 .animation(Animation.easeInOut(duration: 0.3))
 ```
+
+
+
+------
 
 
 
