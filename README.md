@@ -2,7 +2,7 @@
 
 Swift UI Test with Weather API
 
-<img src="screenshot.jpg" alt="screenshot" height="500px" />
+<img src="screenshot.png" alt="screenshot" height="500px" />
 
 
 
@@ -45,6 +45,30 @@ func loadWeather ( ) -> Void {
 
 
 
-## Step2. Display data on widget
+## Step2. Animation & Refresh Data
+
+<video src="screenrecord.mp4"height="500px" ></video>
+
+```swift
+// Button's style
+Button(action: reloadWeather){
+  Text("Reload Weather")
+  .font(.headline)
+  .fontWeight(.semibold)
+  .foregroundColor(Color.white)
+  .padding(.horizontal, 30.0)
+  .padding(.vertical, 10.0)
+  .background(Color.blue)
+}
+.cornerRadius(10)
+.padding(.bottom, UIScreen.main.bounds.height * 0.08)
+.opacity(self.loaded ? 1 : 0 )
+.offset(x: 0, y: CGFloat(self.loaded ? 0 : UIScreen.main.bounds.height * 0.1 ))
+.animation(Animation.easeInOut(duration: 0.3))
+```
+
+
+
+## Step3. Display data on widget
 
 - Not yet
