@@ -81,4 +81,13 @@ Button(action: reloadWeather){
 
 ## Step3. Display data on widget
 
-- Not yet
+- Editor -> Add Target -> "Today Extension"
+
+- And make today-widget easily. similar with making swift app
+
+- Only storyboard, not SwiftUI
+
+- Also, this extension needs "Internet Permission" independently
+
+  <img src="today-widget.png" alt="screenshot" height="200px" />
+
