@@ -83,7 +83,7 @@ Button(action: reloadWeather){
 
 - Editor -> Add Target -> "Today Extension"
 
-- And make today-widget easily. similar with making swift app
+- And make today-widget easily. It's similar with making swift app
 
 - Only storyboard, not SwiftUI
 
@@ -91,3 +91,12 @@ Button(action: reloadWeather){
 
   <img src="today-widget.png" alt="screenshot" height="200px" />
 
+
+-----
+
+
+## Step4. Load weather on device's location (NOT YET)
+
+- At now, this displays only Seoul's Weather
+
+- Find some API and make again to show any location's weather
